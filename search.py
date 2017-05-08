@@ -3,7 +3,7 @@
 The way to use this code is to subclass Problem to create a class of problems,
 then create problem instances and solve them with calls to the various search
 functions."""
-
+from __future__ import print_function
 from utils import (
     is_in, argmin, argmax, argmax_random_tie, probability, weighted_sampler,
     weighted_sample_with_replacement, memoize, print_table, DataFile, Stack,
@@ -573,10 +573,10 @@ def genetic_search(problem, fitness_fn, ngen=1000, pmut=0.1, n=20):
     """Call genetic_algorithm on the appropriate parts of a problem.
     This requires the problem to have states that can mate and mutate,
     plus a value method that scores states."""
-    
+
     # NOTE: This is not tested and might not work.
     # TODO: Use this function to make Problems work with genetic_algorithm.
-    
+
     s = problem.initial_state
     states = [problem.result(s, a) for a in problem.actions(s)]
     random.shuffle(states)

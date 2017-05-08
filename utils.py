@@ -2,7 +2,7 @@
 
 import bisect
 import collections
-import collections.abc
+import abc
 import operator
 import os.path
 import random
@@ -510,7 +510,10 @@ def subexpressions(x):
     yield x
     if isinstance(x, Expr):
         for arg in x.args:
-            yield from subexpressions(arg)
+            # * Note quite a replacement, but this will have to do.
+            # yield from subexpressions(arg)
+            for subexp in arg:
+                yield subexp
 
 
 def arity(expression):
